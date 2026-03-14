@@ -1,6 +1,10 @@
 package com.crisdev.pedrapapeltesoura.ui.screen
 
 import android.util.Log
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,10 +15,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.crisdev.pedrapapeltesoura.R
@@ -22,22 +28,41 @@ import com.crisdev.pedrapapeltesoura.ui.components.BoxArea
 import com.crisdev.pedrapapeltesoura.ui.components.RowBoxArea
 import com.crisdev.pedrapapeltesoura.ui.core.DetermineWinner
 import com.crisdev.pedrapapeltesoura.ui.core.GameResult
+import com.crisdev.pedrapapeltesoura.ui.theme.BackgroundLight
 import kotlin.random.Random
 
 @Composable
 fun GameScreen(modifier: Modifier = Modifier) {
+    var corFundoVencedor by remember { mutableStateOf(BackgroundLight) }
     var escolhaComputador by remember { mutableIntStateOf(-1) }
     var escolhaJogador by remember { mutableIntStateOf(-1) }
 
-    when(escolhaComputador){
+    val corAnimadaFundo by animateColorAsState(
+        targetValue = (corFundoVencedor),
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioLowBouncy,
+            stiffness = Spring.StiffnessVeryLow
+        )
+    )
+
+    when (escolhaComputador) {
         0 -> R.drawable.pedra
         1 -> R.drawable.papel
         2 -> R.drawable.tesoura
         else -> R.drawable.fundo
     }
 
+    val resultadoVencedor =
+        if (escolhaJogador != -1 && escolhaComputador != -1) {
+            DetermineWinner(escolhaJogador, escolhaComputador)
+        } else {
+            GameResult.NONE
+        }
+
     Column(
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier
+            .fillMaxSize()
+            .background(corAnimadaFundo),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
@@ -83,36 +108,25 @@ fun GameScreen(modifier: Modifier = Modifier) {
             )
         }
 
-        val resultadoVencedor =
-            if (escolhaJogador != -1 && escolhaComputador != -1) {
-                DetermineWinner(escolhaJogador, escolhaComputador)
-            } else {
-                GameResult.NONE
-            }
-
         when (resultadoVencedor) {
             GameResult.DRAW -> {
-                Text(
-                    text = stringResource(R.string.text_empate)
-                )
+                Text(text = stringResource(R.string.text_empate))
+                corFundoVencedor = BackgroundLight
             }
 
             GameResult.PLAYER_WIN -> {
-                Text(
-                    text = stringResource(R.string.text_vitoria_jogador)
-                )
+                Text(text = stringResource(R.string.text_vitoria_jogador))
+                corFundoVencedor = Color.Green
             }
 
             GameResult.COMPUTER_WIN -> {
-                Text(
-                    text = stringResource(R.string.text_vitoria_computador)
-                )
+                Text(text = stringResource(R.string.text_vitoria_computador))
+                corFundoVencedor = Color.Red
             }
 
             GameResult.NONE -> {
-                Text(
-                    text = ""
-                )
+                Text(text = "")
+                corFundoVencedor = BackgroundLight
             }
         }
     }
