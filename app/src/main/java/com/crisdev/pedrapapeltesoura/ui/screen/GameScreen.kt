@@ -29,9 +29,6 @@ fun GameScreen(modifier: Modifier = Modifier) {
     var escolhaComputador by remember { mutableIntStateOf(-1) }
     var escolhaJogador by remember { mutableIntStateOf(-1) }
 
-    Log.i("INFO COMPUTADOR", "GameScreen: ${escolhaComputador}")
-    Log.i("INFO JOGADOR ", "GameScreen: ${escolhaJogador}")
-
     when(escolhaComputador){
         0 -> R.drawable.pedra
         1 -> R.drawable.papel
