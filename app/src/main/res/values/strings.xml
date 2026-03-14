@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Pedra, Papel Tesoura</string>
+    <!-- GameScreen Texts -->
+    <string name="text_escolha_app">Escolha do App</string>
+    <string name="text_escolha_jogador">Escolha do Jogador</string>
+    <string name="text_empate">Empate</string>
+    <string name="text_vitoria_jogador">Vitória do Jogador</string>
+    <string name="text_vitoria_computador">Vitória do Computador</string>
+</resources>
