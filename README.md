@@ -1,8 +1,12 @@
 # 🪨📄✂️ Pedra, Papel e Tesoura - Android
 
+![Kotlin](https://img.shields.io/badge/Kotlin-Language-purple?logo=kotlin)
+![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-Modern%20UI-blue?logo=android)
+![Android](https://img.shields.io/badge/Android-Mobile%20Development-green?logo=android)
+
 Um aplicativo simples e divertido do clássico jogo **Pedra, Papel e Tesoura**, desenvolvido para Android utilizando **Jetpack Compose** e **Kotlin**.
 
-O projeto foi criado com o objetivo de praticar **lógica de programação, gerenciamento de estado e desenvolvimento de interfaces modernas no Android**.
+O projeto foi criado com o objetivo de praticar **lógica de programação, gerenciamento de estado e desenvolvimento de interfaces**.
 
 ---
 
