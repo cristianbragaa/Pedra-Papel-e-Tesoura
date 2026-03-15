@@ -60,7 +60,6 @@ Este projeto aplica diversos conceitos importantes do desenvolvimento Android:
 
 # 📂 Estrutura do projeto
 
-```
 app
  ├── ui
      ├── components
@@ -68,7 +67,6 @@ app
      ├── core
      └── theme
 
----
 
 # 🎯 Objetivo do projeto
 
