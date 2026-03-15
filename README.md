@@ -60,12 +60,14 @@ Este projeto aplica diversos conceitos importantes do desenvolvimento Android:
 
 # 📂 Estrutura do projeto
 
+```
 app
  ├── ui
      ├── components
      ├── screens
      ├── core
      └── theme
+```
 
 
 # 🎯 Objetivo do projeto
@@ -82,7 +84,7 @@ Este projeto foi desenvolvido como parte de estudos em **desenvolvimento Android
 # 📸 Demonstração
 
 Exemplo:
-![Preview](https://github.com/user-attachments/assets/1a84ec66-b3b9-422a-bd28-ee6a0e5b0b1e)
+https://github.com/user-attachments/assets/1a84ec66-b3b9-422a-bd28-ee6a0e5b0b1e
 
 ---
 
